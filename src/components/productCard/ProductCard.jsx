@@ -33,7 +33,7 @@ const ProductCard = ({ product, quantity }) => {
               Add To Cart
             </button>
             <button
-              className="p-1 text-white bg-red-600 hover:bg-red-800 rounded-lg mx-1"
+              className="p-1 text-white bg-green-500 hover:bg-red-800 rounded-lg mx-1"
               onClick={() => dispatch(removeFromCart(product.id))}
             >
               Remove From Cart
