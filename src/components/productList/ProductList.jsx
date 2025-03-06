@@ -63,6 +63,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux"; // Access Redux store
 import SearchBar from "../searchBar/SearchBar";
+import Navigation from "../Home/Navigation";
 
 export default function ProductList({ products }) {
   const dispatch = useDispatch();
@@ -82,10 +83,12 @@ export default function ProductList({ products }) {
 
   return (
     <div>
-      <SearchBar
-        setFilteredProducts={setFilteredProducts}
-        products={products}
-      ></SearchBar>
+      <Navigation>
+        <SearchBar
+          setFilteredProducts={setFilteredProducts}
+          products={products}
+        ></SearchBar>
+      </Navigation>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2 bg-white rounded-2xl shadow-lg">
         {products
           .slice()
