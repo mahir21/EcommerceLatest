@@ -1,9 +1,23 @@
-import React from 'react'
+import React from "react";
+import Navigation from "./Navigation";
+import Hero from "./Hero";
+import SecondCarousel from "./SecondCarousel";
+import ThirdCarousel from "./ThirdCarousel";
+import UpperCarousel from "./UpperCarousel";
+import Steps from "./Steps";
 
 const HomePage = () => {
   return (
-    <div>HomePage</div>
-  )
-}
+    <div>
+      <Navigation></Navigation>
+      <UpperCarousel></UpperCarousel>
+      <Steps></Steps>
+      <SecondCarousel></SecondCarousel>
+      <Hero></Hero>
 
-export default HomePage
+      <ThirdCarousel></ThirdCarousel>
+    </div>
+  );
+};
+
+export default HomePage;

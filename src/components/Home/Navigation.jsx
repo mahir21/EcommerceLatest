@@ -13,12 +13,14 @@ const Navigation = () => {
         <SearchBar></SearchBar>
 
         <ul className="flex text-gray-700 space-x-5 text-white font-semibold">
-          <li>Home</li>
           <li>
-            <Link href="/productList">Shop</Link>
+            <Link href="/">Home</Link>
+          </li>
+
+          <li>
+            <Link href="/productList">ShopY</Link>
           </li>
           <li>About Us</li>
-          {/* <LoginButton></LoginButton> */}
         </ul>
       </nav>
     </div>

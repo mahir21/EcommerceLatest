@@ -1,36 +1,28 @@
-// pages/productList.js
-import { useDispatch } from "react-redux";
-import { useEffect } from "react"; // Importing useEffect to dispatch to Redux on client-side
-import { setProducts } from "@/redux/cartSlice"; // Action to set products in Redux
+import React from "react";
+
+import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
+import { addToCart, removeFromCart } from "../redux/cartSlice";
 import ProductList from "@/components/productList/ProductList";
-import Navigation from "@/components/home/Navigation";
-import Footer from "@/components/home/footer/Footer";
 
-//Server Side Function Is Fetching The Products.
-export async function getServerSideProps() {
-  const res = await fetch(
-    "https://staging-be-ecom.techserve4u.com/api/product/getProducts"
-  );
-
-  const data = await res.json();
-
-  //Return products as props to be used by data
-  return { props: { products: data.products } };
-}
-
-export default function ProductListPage({ products }) {
-  const dispatch = useDispatch();
-
-  // //Dispatch the fetched products to Redux
-  // useEffect(() => {
-  //   if (products && products.length > 0) {
-  //     dispatch(setProducts(products)); // Store the fetched products in Redux
-  //   }
-  // }, [products, dispatch]);
-
+export default function productList({ products }) {
   return (
     <div>
-      <ProductList /> {/* Product List Will Now Get The Products From Redux */}
+      <h1>Ecommerce Project</h1>
+      <ProductList products={products}></ProductList>
     </div>
   );
+}
+
+// Fetch product list using Server-Side Rendering (SSR)
+export async function getServerSideProps() {
+  try {
+    const res = await axios.get(
+      "https://staging-be-ecom.techserve4u.com/api/product/getProducts"
+    );
+    return { props: { products: res.data.products || [] } };
+  } catch (error) {
+    console.error("Error fetching products:", error);
+    return { props: { products: [] } };
+  }
 }
