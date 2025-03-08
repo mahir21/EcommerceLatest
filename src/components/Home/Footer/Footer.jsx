@@ -1,45 +1,56 @@
-import React from "react";
 import Link from "next/link";
 import { FaFacebookF, FaInstagram } from "react-icons/fa";
 
 const Footer = () => {
-  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 p-8 bg-[#e07a5f] text-gray-200 font-sans">
-    <div className="mt-2">
-      <ul className="space-y-2 font-semibold">
-        <li>
-          <Link href="/">Home</Link>
-        </li>
-        <li>
-          <Link href="/productList">ProductList</Link>
-        </li>
-        <li>
-          <Link href="/">About</Link>
-        </li>
-      </ul>
-    </div>
+  return (
+    <footer className="bg-[#e07a5f] text-gray-200 font-sans py-8 px-6">
+      <div className="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+        {/* Navigation Links */}
+        <div>
+          <h3 className="font-semibold mb-2">Quick Links</h3>
+          <ul className="space-y-2">
+            <li>
+              <Link href="/" className="hover:underline">
+                Home
+              </Link>
+            </li>
+            <li>
+              <Link href="/productList" className="hover:underline">
+                Products
+              </Link>
+            </li>
+            <li>
+              <Link href="/about" className="hover:underline">
+                About
+              </Link>
+            </li>
+          </ul>
+        </div>
 
-    <div className="p-4">
-      <h3 className="font-semibold">Contact Us</h3>
-      <ul className="space-y-2">
-        <li>Email: mart@gmail.com</li>
-        <li>Contact: 789584347 </li>
-      </ul>
-    </div>
+        {/* Contact Information */}
+        <div>
+          <h3 className="font-semibold mb-2">Contact Us</h3>
+          <ul className="space-y-2">
+            <li>Email: mart@gmail.com</li>
+            <li>Phone: (789) 584-347</li>
+          </ul>
+        </div>
 
-    <div className="p-4">
-      <h3 className="font-semibold">Connect With Us</h3>
-      <ul className="space-y-2">
-        <li>
-          <span>Facebook</span>
-          <FaFacebookF className="w-6 h-6 text-white hover:text-blue-500 transition" />
-        </li>
-        <li>
-          <span>Instagram</span>
-          <FaInstagram className="w-6 h-6 text-white hover:text-pink-500 transition" />
-        </li>
-      </ul>
-    </div>
-  </div>;
+        {/* Social Media Links */}
+        <div>
+          <h3 className="font-semibold mb-2">Follow Us</h3>
+          <div className="flex space-x-4">
+            <a href="#" className="text-white hover:text-blue-500 transition">
+              <FaFacebookF className="w-6 h-6" />
+            </a>
+            <a href="#" className="text-white hover:text-pink-500 transition">
+              <FaInstagram className="w-6 h-6" />
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
 };
 
 export default Footer;

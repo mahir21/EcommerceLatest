@@ -9,7 +9,7 @@ import Footer from "../Home/Footer/Footer";
 
 export default function ProductList({ products }) {
   const dispatch = useDispatch();
-  const [filteredProducts, setFilteredProducts] = useState(products);
+  const [filter, setFilter] = useState(products);
 
   const cart = useSelector((state) => state.cart.items);
 
@@ -26,13 +26,10 @@ export default function ProductList({ products }) {
   return (
     <div>
       <Navigation>
-        <SearchBar
-          setFilteredProducts={setFilteredProducts}
-          products={products}
-        ></SearchBar>
+        <SearchBar setFilter={setFilter} products={products} />
       </Navigation>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2 bg-white rounded-2xl shadow-lg">
-        {products
+        {filter
           .slice()
           .reverse()
           .map((product) => {

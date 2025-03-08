@@ -5,6 +5,7 @@ import SecondCarousel from "./SecondCarousel";
 import ThirdCarousel from "./ThirdCarousel";
 import UpperCarousel from "./UpperCarousel";
 import Steps from "./Steps";
+import Footer from "./Footer/Footer";
 
 const HomePage = () => {
   return (
@@ -14,8 +15,7 @@ const HomePage = () => {
       <Steps></Steps>
       <SecondCarousel></SecondCarousel>
       <Hero></Hero>
-
-      <ThirdCarousel></ThirdCarousel>
+      <Footer></Footer>
     </div>
   );
 };
