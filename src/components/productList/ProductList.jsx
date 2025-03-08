@@ -1,62 +1,3 @@
-// "use client";
-// import { addToCart, removeFromCart } from "@/redux/cartSlice";
-// import React from "react";
-// import { useDispatch } from "react-redux";
-// import { useSelector } from "react-redux"; // Access Redux store
-
-// export default function ProductList({ products }) {
-//   const dispatch = useDispatch();
-
-//   const cart = useSelector((state) => state.cart.items);
-
-//   return (
-
-//     <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
-
-//       products.map((product) => {
-
-//         const quantity = cart[product.id];
-
-//         return (
-
-//       <img
-//         src={product.thumbnail || "https://via.placeholder.com/150"} // Fallback image
-//         alt={product.name || "Product Image"}
-//         className="w-full h-64 hover:scale-110 object-cover object-center"
-//       />
-//       <div className="p-2">
-//         <h3 className="flex font-bold justify-center text-lg text-gray-800">
-//           {product.name}
-//         </h3>
-//         <div className="flex items-center justify-between mt-4 p-2">
-//           <p className="font-semibold text-gray-700">
-//             Product Price: ${product.price}
-//           </p>
-//           <div>
-//             <button
-//               className="p-1 text-white bg-indigo-600 hover:bg-indigo-800 rounded-lg mx-1"
-//               onClick={() => dispatch(addToCart(product))}
-//             >
-//               Add To Cart
-//             </button>
-//             <button
-//               className="p-1 text-white bg-red-600 hover:bg-red-800 rounded-lg mx-1"
-//               onClick={() => dispatch(removeFromCart(product.id))}
-//             >
-//               Remove From Cart
-//             </button>
-//             <p className="text-green-500">Quantity:{quantity}</p>
-//           </div>
-//         </div>
-//       </div>
-
-//         )
-//       }
-
-//     </div>
-//   );
-// }
-
 "use client";
 import { addToCart, removeFromCart } from "@/redux/cartSlice";
 import React, { useState } from "react";
@@ -64,10 +5,11 @@ import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux"; // Access Redux store
 import SearchBar from "../searchBar/SearchBar";
 import Navigation from "../Home/Navigation";
+import Footer from "../Home/Footer/Footer";
 
 export default function ProductList({ products }) {
   const dispatch = useDispatch();
-  const [filteredProducts, setFilteredProducts] = useState(products);
+  const [filter, setFilter] = useState(products);
 
   const cart = useSelector((state) => state.cart.items);
 
@@ -84,17 +26,13 @@ export default function ProductList({ products }) {
   return (
     <div>
       <Navigation>
-        <SearchBar
-          setFilteredProducts={setFilteredProducts}
-          products={products}
-        ></SearchBar>
+        <SearchBar setFilter={setFilter} products={products} />
       </Navigation>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2 bg-white rounded-2xl shadow-lg">
-        {products
+        {filter
           .slice()
           .reverse()
           .map((product) => {
-            // Fixed: Wrapped the map function in curly braces
             const quantity = cart[product._id];
 
             return (
@@ -149,6 +87,7 @@ export default function ProductList({ products }) {
       <div className="flex justify-center mt-4">
         <h2>Total Price: ${totalPrice}</h2>
       </div>
+      <Footer></Footer>
     </div>
   );
 }
