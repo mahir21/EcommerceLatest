@@ -72,7 +72,6 @@ import ProductList from "@/components/productList/ProductList";
 export default function Home({ products }) {
   return (
     <div>
-      <h1>Ecommerce Project</h1>
       <ProductList products={products}></ProductList>
     </div>
   );
